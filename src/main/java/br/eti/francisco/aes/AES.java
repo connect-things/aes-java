@@ -24,18 +24,14 @@ public class AES {
       try {
          key = myKey.getBytes("UTF-8");
          System.out.println("key length: " + key.length);
-         sha = MessageDigest.getInstance("SHA-1");
-         key = sha.digest(key);
+//         sha = MessageDigest.getInstance("SHA-1");
+//         key = sha.digest(key);
          key = Arrays.copyOf(key, 16); // use only first 128 bit
          System.out.println("Key length after SHA-1: " + key.length);
          System.out.println("Key after SHA-1: " + new String(key, "UTF-8"));
          secretKey = new SecretKeySpec(key, "AES");
 
-      } catch (NoSuchAlgorithmException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      } catch (UnsupportedEncodingException e) {
-         // TODO Auto-generated catch block
+      } catch (Exception e) {
          e.printStackTrace();
       }
 
